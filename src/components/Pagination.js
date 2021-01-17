@@ -4,8 +4,8 @@ import React from 'react'
 const Pagination = ({ charactersPerPage, currentPage, totalCharacters, paginate }) => {
   const pageNumbers = [];
   const pages = Math.ceil(totalCharacters / charactersPerPage)
-  console.log({ charactersPerPage, currentPage, totalCharacters, paginate })
-    // Deve ter uma maneira melhor de fazer isso
+
+  // Deve ter uma maneira melhor de fazer isso
   if (currentPage === 1) {
     for (let i = currentPage; i <= pages; i++) {
       pageNumbers.push(i);

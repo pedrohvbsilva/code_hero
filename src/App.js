@@ -9,11 +9,11 @@ function App() {
   const [ characters, setCharacters ] = useState([]);
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ currentPage, setCurrentPage ] = useState(1);
-  const [ charactersPerPage ] = useState(10);
+  const charactersPerPage = 10;
 
   useEffect(() => {
     getMovies(MARVEL_API)
-  }, [])
+  })
   
   const getMovies = (API) => {
     fetch(API)
