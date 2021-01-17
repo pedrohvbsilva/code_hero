@@ -1,44 +1,45 @@
 import React from 'react'
 
 // const Pagination = ({ charactersPerPage, totalCharacters, paginate }) => {
-const Pagination = ({ currentPage, paginate }) => {
-
+const Pagination = ({ charactersPerPage, currentPage, totalCharacters, paginate }) => {
   const pageNumbers = [];
-  // Deve ter uma maneira melhor de fazer isso
+  const pages = Math.ceil(totalCharacters / charactersPerPage)
+  console.log({ charactersPerPage, currentPage, totalCharacters, paginate })
+    // Deve ter uma maneira melhor de fazer isso
   if (currentPage === 1) {
-    for (let i = currentPage; i <= 5; i++) {
+    for (let i = currentPage; i <= pages; i++) {
       pageNumbers.push(i);
     }
     pageNumbers.push('>')
     pageNumbers.push('>>')
   } else if(currentPage === 2) {
       pageNumbers.push('<')
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= pages; i++) {
         pageNumbers.push(i);
       }
       pageNumbers.push('>')
       pageNumbers.push('>>')
-    } else if(currentPage === 3) {
+    } else if(currentPage >= 3 && currentPage < pages - 1) {
         pageNumbers.push('<<')
         pageNumbers.push('<')
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= pages; i++) {
           pageNumbers.push(i);
         }
         pageNumbers.push('>')
         pageNumbers.push('>>')
-  } else if( currentPage === 4 ) {
+    } else if( currentPage === pages - 1 ) {
     pageNumbers.push('<<')
     pageNumbers.push('<')
-    for (let i = 1; i <= 5; i++) {
-      pageNumbers.push(i);
-    }
-    pageNumbers.push('>')
-  } else if(currentPage === 5 ) {
-    pageNumbers.push('<<')
-    pageNumbers.push('<')
-    for (let i = 1; i <= 5; i++) {
-      pageNumbers.push(i);
-    }
+      for (let i = 1; i <= pages; i++) {
+        pageNumbers.push(i);
+      }
+      pageNumbers.push('>')
+    } else if(currentPage === pages ) {
+      pageNumbers.push('<<')
+      pageNumbers.push('<')
+      for (let i = 1; i <= pages; i++) {
+        pageNumbers.push(i);
+      }
   } 
 
   return (
@@ -52,7 +53,7 @@ const Pagination = ({ currentPage, paginate }) => {
                   } else if (number === '<') {
                     paginate(currentPage - 1)
                   } else if (number === '>>') {
-                    paginate(5)
+                    paginate(pages)
                   } else if (number === '>') {
                     paginate(currentPage + 1)
                   } else {

@@ -2,7 +2,7 @@ import React from 'react'
 
 const ListItem = ({ character }) => {
     const {name, series, events, thumbnail, description} = character
-    console.log(character)
+
     return (      
         <div className='character'>
             <img src={thumbnail.path + '.' + thumbnail.extension} alt={name} />

@@ -80,7 +80,9 @@ function App() {
 
       <footer>
         <Pagination 
+          charactersPerPage={charactersPerPage}
           currentPage={currentPage} 
+          totalCharacters={characters.length}
           paginate={paginate}/>
       </footer>
     </>
